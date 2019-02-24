@@ -7,6 +7,7 @@ import modules1.fingerprint.cms as cms
 import modules1.fingerprint.waf as waf
 import modules1.fingerprint.headers as header
 import modules1.fingerprint.server as server
+import modules1.discovery.generic.wpversion as wpver
 import lib1.ragent as rand_agent
 import lib1.check as gen_check
 import lib1.request as request
@@ -52,3 +53,6 @@ print("\nThe target site is running Wordpress CMS")
 print("\nPerforming a full verbose check on the targeted url: ",url)
 print("\nEnumerating all the users in the wordpress server:")
 users.wpusers(url,None,kwargs).run()
+
+#Performing a version check:
+wpver.wpversion(url,None,kwargs).run()

@@ -15,11 +15,11 @@ What does it do?
 4: Checks to see if there is any security scanner installed in the target system(Done)
 5: Enumerates all plugins and their vulnerabilities(if exists)
 6: Similarly for Themes as well
-7: List out the current version of wordpress and it's associated vulnerabilities(if exists)
+7: List out the current version of wordpress and it's associated vulnerabilities(if exists) (Done)
 8: Checks to see if Directory Listing is enabled or not
 9: Server information.(Done)
 10: Check for common files that may exists(Generic Information).
-11: Uncomman headers(Done)
+11: Uncommon headers(Done)
 There's a lot more to do?
 
 1: Brute force attacks

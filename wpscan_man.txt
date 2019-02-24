@@ -12,14 +12,14 @@ What does it do?
 1: By default the program runs in verbose mode.
 2: Enumerates Users and their ID's(Done)
 3: Checks if a target wesite runs WP or not(Done)
-4: Checks to see if there is any security scanner installed in the target system
+4: Checks to see if there is any security scanner installed in the target system(Done)
 5: Enumerates all plugins and their vulnerabilities(if exists)
 6: Similarly for Themes as well
 7: List out the current version of wordpress and it's associated vulnerabilities(if exists)
 8: Checks to see if Directory Listing is enabled or not
-9: Server information.
+9: Server information.(Done)
 10: Check for common files that may exists(Generic Information).
-
+11: Uncomman headers(Done)
 There's a lot more to do?
 
 1: Brute force attacks

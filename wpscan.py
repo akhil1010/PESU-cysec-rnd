@@ -1,15 +1,15 @@
-import modules.discovery.plugins as plug
-import modules.discovery.generic as generic
-import modules.discovery.themes as themes
-import modules.discovery.users.wpusers as users
-import modules.fingerprint.fingerprint as fingerprint
-import modules.fingerprint.cms as cms
-import modules.fingerprint.waf as waf
-import modules.fingerprint.headers as header
-import modules.fingerprint.server as server
-import lib.ragent as rand_agent
-import lib.check as gen_check
-import lib.request as request
+#import modules.discovery.plugins as plug
+#import modules.discovery.generic as generic
+#import modules.discovery.themes as themes
+import modules1.discovery.users.wpusers as users
+import modules1.fingerprint.fingerprint as fingerprint
+import modules1.fingerprint.cms as cms
+import modules1.fingerprint.waf as waf
+import modules1.fingerprint.headers as header
+import modules1.fingerprint.server as server
+import lib1.ragent as rand_agent
+import lib1.check as gen_check
+import lib1.request as request
 
 kwargs = {
 			 'agent':rand_agent.ragent(),'ragent':False,'redirect':True,
@@ -30,8 +30,25 @@ _cms_ = cms.cms(req.headers,req.content)
 if 'wordpress' not in _cms_:
     exit(print("That site not running WordPress"))
 
-print("The target site is running Wordpress CMS")
+# To Obtain information about the server
+print("\nThe Server Information:")
+_server_ = server.server(req.headers)
+if _server_:
+    print("Server: %s"%(_server_))
+
+#To find any wordpress security system is enables(famous one)
+print("\nAny security system at the target website:")
+_waf_ = waf.waf(req.content)
+for w in _waf_:
+    if w != None:
+        print("WAF:%s"%(w))
+# To figure out if there is any uncommon headers
+header.headers(req.headers)
+
+
+print("\nThe target site is running Wordpress CMS")
+
 #Performing a user enumeration on the website 
-print("Performing a full verbose check on the targeted url: ",url)
-print("Enumerating all the users in the wordpress server:")
+print("\nPerforming a full verbose check on the targeted url: ",url)
+print("\nEnumerating all the users in the wordpress server:")
 users.wpusers(url,None,kwargs).run()

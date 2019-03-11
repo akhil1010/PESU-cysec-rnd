@@ -1,3 +1,11 @@
+'''
+*****************************************************************************************
+This program implements the functionality of basic nmap scanner commands like -sS -sU -sV -sC and can grab csv records
+The program can also be able to do banner grabbing and can show manual for original nmap scanner
+Code written and executed By- Akhil Upadhyay PESU Cybersecurity group Head R&D dept. Head 
+For any queries contact me on github- username akhil1010
+*****************************************************************************************
+'''
 import nmap
 import socket
 scanner=nmap.PortScanner()
@@ -98,5 +106,9 @@ elif resp=='#':												#press #for manual of nmap
 
 else:
 	exit(0)												#exit for any other response
-
+'''
+**************************************************************************************************************
+program ends here
+**************************************************************************************************************
+'''
 	

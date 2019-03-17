@@ -30,6 +30,7 @@ def time_based(req):
         else:
                 print("The given url is not vulnerable to Time based SQL attack")
 
+                
 def fetch(url=req,parameter=""):
         try:
                 request = urllib.request.urlopen(url+str(parameter))

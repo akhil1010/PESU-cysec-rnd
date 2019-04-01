@@ -1,8 +1,7 @@
 """Support for fingerprinting CMS."""
 from re import I, search
 
-def decode(string):
-	return string.encode('utf-8')
+
 
 
 def wordpress(headers,content):

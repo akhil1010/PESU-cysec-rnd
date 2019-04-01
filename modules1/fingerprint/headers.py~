@@ -19,4 +19,4 @@ def headers(headers):
 	for key in headers.keys():
 		#print(key)
 		if key not in common_headers:
-			print('Uncommon header "%s" found, with contents: %s'%(key,headers[key]))
+			plus('Uncommon header "%s" found, with contents: %s'%(key,headers[key]))

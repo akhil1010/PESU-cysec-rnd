@@ -2,9 +2,11 @@
 from json import loads
 from re import findall
 
-from lib.request import *
+from lib1.request import *
 
 
+def decode(string):
+	return string.encode('utf-8')
 class wpversion(Request):
 	def __init__(self,url,data,kwargs):
 		self.url = url 

@@ -2,7 +2,7 @@
 from json import loads
 from re import findall
 
-from lib.request import *
+from lib1.request import *
 
 
 class wpversion(Request):
@@ -30,7 +30,7 @@ class wpversion(Request):
 				if resp.status_code == 200 and resp.content != ("" or None):
 					version = findall(decode('\S+?v=(\d+.\d+[.\d+]*)'),resp.content)
 					if version:
-						print('Running WordPress version: %s'%version[0].decode('utf-8'))
+						print('\nRunning WordPress version: %s'%version[0].decode('utf-8'))
 						self.dbwpscan(version)
 			except Exception as e:
 				try:
@@ -39,7 +39,7 @@ class wpversion(Request):
 					if resp.status_code == 200 and resp.content != ("" or None):
 						version = findall(decode('<generator uri="http://wordpress.org/" version="(\d+\.\d+[\.\d+]*)"'),resp.content)
 						if version:
-							print('Running WordPress version: %s'%version[0].decode('utf-8'))
+							print('\nRunning WordPress version: %s'%version[0].decode('utf-8'))
 							self.dbwpscan(version)
 				except Exception as e:
 					try:
@@ -48,7 +48,7 @@ class wpversion(Request):
 						if resp.status_code == 200 and resp.content != ("" or None):
 							version = findall(decode('.*wordpress-logo.png" /></a>\n.*<br />.* (\d+\.\d+[\.\d+]*)\n</h1>'),resp.content)
 							if version:
-								print('Running WordPress version: %s'%version[0].decode('utf-8'))
+								print('\nRunning WordPress version: %s'%version[0].decode('utf-8'))
 								self.dbwpscan(version)
 					except Exception as e:
 						try:
@@ -57,7 +57,7 @@ class wpversion(Request):
 							if resp.status_code == 200 and resp.content != ("" or None):
 								version = findall(decode('<meta name="generator" content="WordPress (\d+\.\d+[\.\d+]*)"'),resp.content)
 								if version:
-									print('Running WordPress version: %s'%version[0].decode('utf-8'))
+									print('\nRunning WordPress version: %s'%version[0].decode('utf-8'))
 									self.dbwpscan(version)
 						except Exception:
 							pass

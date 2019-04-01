@@ -1,16 +1,18 @@
-#import modules.discovery.plugins as plug
+import modules1.discovery.plugins.wpplugins as plug 
 #import modules.discovery.generic as generic
 #import modules.discovery.themes as themes
-import modules1.discovery.users.wpusers as users
-import modules1.fingerprint.fingerprint as fingerprint
-import modules1.fingerprint.cms as cms
-import modules1.fingerprint.waf as waf
-import modules1.fingerprint.headers as header
-import modules1.fingerprint.server as server
-import modules1.discovery.generic.wpversion as wpver
-import lib1.ragent as rand_agent
-import lib1.check as gen_check
-import lib1.request as request
+import modules1.discovery.users.wpusers as users 
+import modules1.fingerprint.fingerprint as fingerprint 
+import modules1.fingerprint.cms as cms 
+import modules1.fingerprint.waf as waf 
+import modules1.fingerprint.headers as header 
+import modules1.fingerprint.server as server 
+import modules1.discovery.generic.wpversion as wpver 
+import modules1.discovery.generic.wplisting as wplist 
+import lib1.ragent as rand_agent 
+import lib1.check as gen_check 
+import lib1.request as request 
+import json
 
 kwargs = {
 			 'agent':rand_agent.ragent(),'ragent':False,'redirect':True,
@@ -20,6 +22,7 @@ kwargs = {
 url = input("Enter a url to scan for:")
 
 #For properly formatting the url
+
 url = gen_check.urlCheck(url)
 
 #Preparing a request object, that manages the request to the website
@@ -49,10 +52,19 @@ header.headers(req.headers)
 
 print("\nThe target site is running Wordpress CMS")
 
+#Running a Generi Test
+
+print("Generic Tests")
+wpver.wpversion(url,None,kwargs).run()
+wplist.wplisting(url,None,kwargs).run()
+print()
+print("Plugins and their vulnerablity listing")
+plug.wpplugins(url,None,kwargs).run()
+
+
 #Performing a user enumeration on the website 
 print("\nPerforming a full verbose check on the targeted url: ",url)
 print("\nEnumerating all the users in the wordpress server:")
 users.wpusers(url,None,kwargs).run()
 
-#Performing a version check:
-wpver.wpversion(url,None,kwargs).run()
+

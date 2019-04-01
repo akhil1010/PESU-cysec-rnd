@@ -1,5 +1,5 @@
 AUTHOR: N SANTOSH GOKUL
-DATE: 24/Feb/2019
+DATE: 01/April/2019
 LANGUAGE: PYTHON 3
 
 
@@ -13,10 +13,10 @@ What does it do?
 2: Enumerates Users and their ID's(Done)
 3: Checks if a target wesite runs WP or not(Done)
 4: Checks to see if there is any security scanner installed in the target system(Done)
-5: Enumerates all plugins and their vulnerabilities(if exists)
+5: Enumerates all plugins and their vulnerabilities(Done)
 6: Similarly for Themes as well
 7: List out the current version of wordpress and it's associated vulnerabilities(if exists) (Done)
-8: Checks to see if Directory Listing is enabled or not
+8: Checks to see if Directory Listing is enabled or not (Done)
 9: Server information.(Done)
 10: Check for common files that may exists(Generic Information).
 11: Uncommon headers(Done)

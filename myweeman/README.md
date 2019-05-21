@@ -1,6 +1,11 @@
 Weeman - HTTP server for phishing
 
 
+DISCLAIMER
+-----------
+
+Usage of Weeman for attacking targets without prior mutual consent is illegal.
+
 About:
 ------
 
@@ -10,10 +15,10 @@ Usually you will want run Weeman with DNS spoof attack.
 Weeman will do the following steps:
 ------------------------------------
 
-1. Create fake html page.
-2. Wait for clients
+1. Create a fake html page.
+2. Wait for clients.
 3. Grab the data (POST).
-4. Try to login the client to the original page 
+4. Try to login the client to the original page. 
 
 Requirements:
 -------------
@@ -26,14 +31,12 @@ Platforms
 -----------
 
 * Linux (any)
-* Mac (Not tested)
-* Windows (Not tested)
 
 
 Usage
 ------
 
-Just type `help`
+Type 'help'
 
 Run server:
 -----------

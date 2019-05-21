@@ -38,16 +38,16 @@ Just type `help`
 Run server:
 -----------
 
-* Set the website to clone
+* Set the website to clone:   
 	 weeman>> set url http://www.facebook.com
 
-* Set the url where you want to redirect the victim after they give username and password, example for facebook
+* Set the url where you want to redirect the victim after they give username and password, example for facebook:   
 	 weeman>> set action_url http://www.facebook.com
 
-* Set the port Weeman server will listen
+* Set the port Weeman server will listen:   
 	 weeman>> set port port_no (ex: 8080)
 
-* Start the server
+* Start the server:   
 	 weeman>> run
 
 

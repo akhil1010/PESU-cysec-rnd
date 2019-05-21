@@ -27,13 +27,13 @@ Requirements:
 2. Python BeautifulSoup 4
 
 
-Platforms
------------
+Platforms:
+----------
 
 * Linux (any)
 
 
-Usage
+Usage:
 ------
 
 Type 'help'

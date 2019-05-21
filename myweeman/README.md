@@ -18,8 +18,8 @@ Weeman will do the following steps:
 Requirements:
 -------------
 
-* Python3
-* Python BeautifulSoup 4
+1. Python3
+2. Python BeautifulSoup 4
 
 
 Platforms
@@ -38,16 +38,16 @@ Just type `help`
 Run server:
 -----------
 
-* set the website to clone
-> set url http://www.facebook.com
+* Set the website to clone
+	 weeman>> set url http://www.facebook.com
 
-* set the url where you want to redirect the victim after they give username and password, example for facebook
-> set action_url http://www.facebook.com
+* Set the url where you want to redirect the victim after they give username and password, example for facebook
+	 weeman>> set action_url http://www.facebook.com
 
-* set the port Weeman server will listen
-> set port port_no (ex: 8080)
+* Set the port Weeman server will listen
+	 weeman>> set port port_no (ex: 8080)
 
 * Start the server
-> run
+	 weeman>> run
 
 

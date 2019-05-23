@@ -1,0 +1,15 @@
+urllib
+requests
+difflib
+tabulate
+nmap
+humanfriendly
+quote
+dnspython
+pyfiglet
+colorama
+sklearn
+pandas
+whois
+phishtank
+google

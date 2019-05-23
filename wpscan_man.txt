@@ -1,0 +1,33 @@
+AUTHOR: N SANTOSH GOKUL
+DATE: 01/April/2019
+LANGUAGE: PYTHON 3
+
+
+Hey There!
+
+This is a manual for the usage of the WpScan written in python3.
+
+What does it do?
+
+1: By default the program runs in verbose mode.
+2: Enumerates Users and their ID's(Done)
+3: Checks if a target wesite runs WP or not(Done)
+4: Checks to see if there is any security scanner installed in the target system(Done)
+5: Enumerates all plugins and their vulnerabilities(Done)
+6: Similarly for Themes as well
+7: List out the current version of wordpress and it's associated vulnerabilities(if exists) (Done)
+8: Checks to see if Directory Listing is enabled or not (Done)
+9: Server information.(Done)
+10: Check for common files that may exists(Generic Information).
+11: Uncommon headers(Done)
+There's a lot more to do?
+
+1: Brute force attacks
+2: Specific plugins scanner for XSS,SQLINJ etc.
+
+Requirements:
+
+pip3 install requests
+pip3 install urllib3
+pip3 install humanfriendly
+

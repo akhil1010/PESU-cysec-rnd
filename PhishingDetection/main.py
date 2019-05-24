@@ -56,8 +56,6 @@ if int(pred[0]) == 1:
 elif int(pred[0]) == -1:
         # print "The website has phishing features. DO NOT VISIT!"
         print("PHISHING")
-
-        # print 'Error -', features_test'''
 #print(features_test)
     
 

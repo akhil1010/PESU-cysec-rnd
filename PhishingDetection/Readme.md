@@ -11,6 +11,5 @@ Total attributes from Dataset: 31
 
 Attributes selected and used : 20 (Using Recursive Feature Elimination(RFE))
 
-Feature extraction from URL(as refernce): https://github.com/rishipalyadav/Phishing-Website-Detection-Using-ML/blob/master/features.py
-
-Still model has to be refined
+Feature extraction from URL(as refernce): https://github.com/rewanth1997/Detect-phishing-websites-using-ML
+https://github.com/rishipalyadav/Phishing-Website-Detection-Using-ML/blob/master/features.py

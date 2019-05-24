@@ -8,7 +8,7 @@ Reference used(Owner): https://github.com/rishipalyadav/Phishing-Website-Detecti
 
 from bs4 import BeautifulSoup
 import urllib, bs4, re
-import google
+#import googlesearch
 import whois
 from datetime import datetime, timezone
 import time
@@ -300,13 +300,15 @@ def web_traffic(url):
         return 0
 
 
-#Google Index
+#Google Index feature
 def google_index(url):
-    site=google.search(url, 5)
+    #this function checks if an url is indexed by google or not & since removal of this feature is not affecting the model at al, I have returned 0
+    """site=googlesearch.search(url, 5)
     if site:
         return 1
     else:
-        return -1
+        return -1"""
+    return 0    
 
 def links_pointing(url):
     #ongoing

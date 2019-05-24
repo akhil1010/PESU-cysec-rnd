@@ -3,7 +3,7 @@
 Created on Sun May 19 20:20:01 2019
 
 @author: Nivedithapatil
-Reference used(Owner): https://github.com/rishipalyadav/Phishing-Website-Detection-Using-ML/blob/master/features.py
+Reference used(Owner): https://github.com/rewanth1997/Detect-phishing-websites-using-ML
 """
 
 from bs4 import BeautifulSoup
